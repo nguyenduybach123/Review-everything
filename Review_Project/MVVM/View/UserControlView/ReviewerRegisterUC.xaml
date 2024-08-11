@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="Review_Project.MVVM.View.UserControlView.ReviewerRegisterUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Review_Project.MVVM.View.UserControlView"
+             xmlns:viewModel="clr-namespace:Review_Project.MVVM.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Name="reviewerRegisterUC">
+
+    <UserControl.DataContext>
+        <viewModel:ReviewerRegisterViewModel></viewModel:ReviewerRegisterViewModel>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <StackPanel>
+                <TextBox x:Name="txtUsername" Style="{StaticResource txtLoginTheme}" materialDesign:HintAssist.Hint="Username"
+                         materialDesign:TextFieldAssist.UnderlineBrush="White"></TextBox>
+                <PasswordBox x:Name="txtPassword" Style="{StaticResource txtPasswordTheme}" materialDesign:HintAssist.Hint="Password"
+                             materialDesign:TextFieldAssist.UnderlineBrush="White"></PasswordBox>
+                <TextBox x:Name="txtPhone" Style="{StaticResource txtLoginTheme}" materialDesign:HintAssist.Hint="Phone"
+                         materialDesign:TextFieldAssist.UnderlineBrush="White"></TextBox>
+                <Image Width="342" Margin="0,0,0,0" Source="/Images/GUI/register.png" Height="280"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel>
+                    <Grid Height="200" VerticalAlignment="Top">
+                        <Border Grid.Column="0"
+                                        CornerRadius="100"
+                                        BorderThickness="5"
+                                        Padding="5"
+                                        Background="Transparent"
+                                        BorderBrush="AliceBlue"
+                                        Width="200" Height="200"
+                                        DockPanel.Dock="Top">
+
+                            <Border.Effect>
+                                <DropShadowEffect></DropShadowEffect>
+                            </Border.Effect>
+
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="userImg"></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+
+                        <local:ButtonCircleIconUC     x:Name="btnAvatarMedia"
+                                                      Width="60" Height="60" 
+                                                      Background1="AliceBlue" Background2="White"
+                                                      Icon="Plus" Foreground="Black"
+                                                      WidthIcon="40" HeightIcon="40" Margin="240,140,100,0" RenderTransformOrigin="0.504,0.907"
+                                                      SubmitButton="{Binding SubmitButtonMediaAvatarCommand}" CommandParameter="{Binding ElementName=reviewerRegisterUC}">
+                        </local:ButtonCircleIconUC>
+
+                    </Grid>
+                    <TextBox x:Name="txtHoten" Style="{StaticResource txtLoginTheme}" materialDesign:HintAssist.Hint="Họ và tên"
+                             materialDesign:TextFieldAssist.UnderlineBrush="White"></TextBox>
+                    <TextBox x:Name="txtGmail" Style="{StaticResource txtLoginTheme}" materialDesign:HintAssist.Hint="Gmail"
+                             materialDesign:TextFieldAssist.UnderlineBrush="White"></TextBox>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Button Style="{StaticResource btnCornRadiusMedium}" Width="150" Height="40"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Command="{Binding SubmitUserRegisterCommand}" CommandParameter="{Binding ElementName=reviewerRegisterUC}">
+
+                    Tạo tại khoản</Button>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

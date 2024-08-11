@@ -1,0 +1,120 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    >
+    <SolidColorBrush x:Key="GoldStarProductItem" Color="White" />
+
+    <LinearGradientBrush x:Key="WhiteGold" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="Gold" Offset="0"></GradientStop>
+        <GradientStop Color="Yellow" Offset="0.5"></GradientStop>
+        <GradientStop Color="White" Offset="1"></GradientStop>
+    </LinearGradientBrush>
+    
+    <DataTemplate x:Key="ProductItemTemplate">
+        <Border
+            Cursor="Hand"
+            Width="200"
+            CornerRadius="10"
+            Background="#1E1F22"
+            BorderBrush="#313338"
+            BorderThickness="1"
+            Padding="5" Margin="10"
+            >
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <ei:CallMethodAction TargetObject="{Binding DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}" MethodName="ProductItem_MouseLeftButtonDown"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <Border.Effect>
+                <DropShadowEffect></DropShadowEffect>
+            </Border.Effect>
+
+
+            <StackPanel>
+
+                <StackPanel Margin="0,5,0,5" Orientation="Horizontal"
+                            HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Border CornerRadius="100"
+                            Margin="5"
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="Black">
+
+                        <Border.Effect>
+                            <DropShadowEffect></DropShadowEffect>
+                        </Border.Effect>
+                        
+                        <Ellipse>
+                            <Ellipse.Fill>
+                                <ImageBrush Stretch="Fill" ImageSource="{Binding Producer.Avatar}"></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Border>
+
+                    <TextBlock Text="{Binding Producer.Name}"
+                               Margin="5,0,0,0" FontSize="15" 
+                               FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+                
+                <Border CornerRadius="20"
+                        Margin="5"
+                        Width="220"
+                        Height="150"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="White">
+
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,220,150"></RectangleGeometry>
+                    </Border.Clip>
+
+                    <Image Stretch="Fill" Source="{Binding Avatar}" Width="230"
+                        Height="160"></Image>
+                        
+                </Border>
+
+                <TextBlock Text="{Binding Name}" 
+                    Margin="0,5,0,5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20" FontWeight="SemiBold" Foreground="White">
+                </TextBlock>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <materialDesign:RatingBar
+                                    x:Name="ReadOnlyRatingBar"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    IsReadOnly="True"
+                                    Value="{Binding Rating}"
+                                    Margin="0,5,0,5"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                        <materialDesign:RatingBar.ValueItemTemplate>
+                            <DataTemplate DataType="system:Int32">
+                                <Grid>
+                                    <materialDesign:PackIcon
+                                                Foreground="{DynamicResource WhiteGold}"
+                                                Width="30" Height="30" Kind="Star" />
+                                </Grid>
+                            </DataTemplate>
+                        </materialDesign:RatingBar.ValueItemTemplate>
+                    </materialDesign:RatingBar>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding View}" Margin="0,0,5,0" FontSize="20" FontWeight="SemiBold" Foreground="White"></TextBlock>
+                        <materialDesign:PackIcon Foreground="White" Margin="0,3,0,0" Width="30" Height="30" Kind="Eye"></materialDesign:PackIcon>
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

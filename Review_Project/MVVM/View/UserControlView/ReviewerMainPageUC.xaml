@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="Review_Project.MVVM.View.UserControlView.ReviewerMainPageUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Review_Project.MVVM.View.UserControlView"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             Height="600" Width="1300"
+             Name="reviewerMainUC">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedReviewerMainPageCommand}" CommandParameter="{Binding ElementName=reviewerMainUC}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+                    Background="#313338" CornerRadius="10 0 0 10">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="1">
+                        <RadioButton  Style="{StaticResource MenuButtonThemeProfile}" 
+                                      Width="100" Height="76"
+                                      Tag="Account"
+                                      Command="{Binding LoadProfileViewCommand}"
+                                      CommandParameter="{Binding ElementName=reviewerMainUC}"
+                                      IsChecked="True">
+                            Profile
+                        </RadioButton>
+
+
+                        <RadioButton  Style="{StaticResource MenuButtonThemeProducts}" 
+                                      Width="100" Height="76"
+                                      Tag="Star"
+                                      Command="{Binding LoadProductHomePageCommand}"
+                                      CommandParameter="{Binding ElementName=reviewerMainUC}"
+                                      >
+                            Product
+                        </RadioButton>
+
+                        <RadioButton  Style="{StaticResource MenuButtonThemePost}" 
+                                      Width="100" Height="76"
+                                      Tag="Star"
+                                      Command="{Binding LoadPostCreationPageCommand}"
+                                      CommandParameter="{Binding ElementName=reviewerMainUC}"
+                                      >
+                            Post
+                        </RadioButton>
+
+                        <RadioButton  Style="{StaticResource MenuButtonThemeLogout}" 
+                                      Width="100" Height="76"
+                                      Tag="Star"
+                                      Margin="0,160,0,0"
+                                      Command="{Binding LoadLogOutCommand}"
+                                      CommandParameter="{Binding ElementName=reviewerMainUC}"
+                                      >
+                            Đăng Xuất
+                        </RadioButton>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+            <Border Grid.Column="1"
+                    Background="#1E1F22" CornerRadius="0 10 10 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <local:ControlBarUC></local:ControlBarUC>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="20">
+                        <ContentControl Content="{Binding CurrentView}"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"></ContentControl>
+                    </Grid>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

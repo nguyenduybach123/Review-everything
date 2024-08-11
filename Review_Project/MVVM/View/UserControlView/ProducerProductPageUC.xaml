@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="Review_Project.MVVM.View.UserControlView.ProducerProductPageUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Review_Project.MVVM.View.UserControlView"
+             xmlns:viewModel="clr-namespace:Review_Project.MVVM.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800"
+             Name="productProducerUC">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadProducerProductPageCommand}" CommandParameter="{Binding ElementName=productProducerUC}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Border CornerRadius="20"  Background="#313338">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock Style="{StaticResource txbTitleLoginTheme}" FontSize="30"> Sản phẩm của tôi</TextBlock>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <Border Width="320" Height="47" Padding="5"
+                            Background="White" CornerRadius="5">
+                        <TextBox  x:Name="txtSearch"
+                                  Width="300" Height="47"
+                                  FontSize="16"
+                                  materialDesign:HintAssist.Hint="Tìm kiếm"
+                                  materialDesign:TextFieldAssist.UnderlineBrush="White"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                  VerticalContentAlignment="Center">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding TextChangedtxtSearchCommand}" CommandParameter="{Binding ElementName=productProducerUC}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                        </TextBox>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <ComboBox
+                        x:Name="cbxCategory"
+                        Width="256"
+                        Background="White"
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadComboboxCategoryCommand}" CommandParameter="{Binding ElementName=productProducerUC}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedCbxCategoryCommand}" CommandParameter="{Binding ElementName=productProducerUC}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </ComboBox>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <ScrollViewer>
+                    <ItemsControl x:Name="productContainer" Margin="10"
+                                  Background="Transparent"
+                                  ItemTemplate="{StaticResource ProductItemTemplate}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Center" Background="Transparent"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+
+        </Grid>
+    </Border>
+</UserControl>

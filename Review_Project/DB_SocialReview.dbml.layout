@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DB_SocialReview">
+  <DataContextMoniker Name="/DB_SocialReviewDataContext" />
+  <nestedChildShapes>
+    <classShape Id="4963624e-2909-44f9-98fa-a2ecdf731795" absoluteBounds="2.625, 1.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DB_SocialReviewDataContext/PRODUCER_ACCOUNT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8af72adb-4bf2-4957-9308-b6fa28e52330" absoluteBounds="2.64, 1.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1fa81561-cb5c-4e75-bfd7-ac7c8fbd9930" absoluteBounds="5.125, 1.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DB_SocialReviewDataContext/REVIEWER_ACCOUNT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="838a07d0-e57d-4abc-892b-f4839c6001be" absoluteBounds="5.1400000000000006, 1.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ea0bdf5a-cb61-41a3-b0a5-2c27553987a2" absoluteBounds="7.5, 1.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DB_SocialReviewDataContext/PRODUCT_CATEGORY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e17cbd7e-13c8-4bcb-abd7-e9dd99f009c8" absoluteBounds="7.5150000000000006, 1.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

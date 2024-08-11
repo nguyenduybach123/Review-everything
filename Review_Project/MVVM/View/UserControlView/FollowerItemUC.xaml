@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Review_Project.MVVM.View.UserControlView.FollowerItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Review_Project.MVVM.View.UserControlView"
+             mc:Ignorable="d" 
+             Name="followerItemUC">
+    <Border CornerRadius="10" Margin="10">
+ 
+        <StackPanel>
+            <Border 
+                CornerRadius="100"
+                Background="AliceBlue"
+                Width="{Binding Path=WidthImg,ElementName=followerItemUC}" Height="{Binding Path=HeightImg,ElementName=followerItemUC}"
+                DockPanel.Dock="Top">
+
+                <Border.Effect>
+                    <DropShadowEffect></DropShadowEffect>
+                </Border.Effect>
+
+                <Ellipse>
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="followerImg"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+            <TextBlock Name="followerName" Text="{Binding Path=FollowerName, ElementName=followerItemUC}"
+                       FontSize="10" Foreground="{Binding Foregournd}" FontWeight="SemiBold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Margin="0,15,0,0"></TextBlock>
+        </StackPanel>       
+    </Border>
+</UserControl>

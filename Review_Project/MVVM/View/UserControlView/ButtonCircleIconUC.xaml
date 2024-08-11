@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Review_Project.MVVM.View.UserControlView.ButtonCircleIconUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Review_Project.MVVM.View.UserControlView"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             x:Name="buttonCircleIcon">
+
+    <UserControl.Resources>
+        <Style TargetType="Border" x:Key="BorderContainer">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding Path=Background3,ElementName=buttonCircleIcon}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Border 
+        CornerRadius="100"
+        Width="{Binding Width}" Height="{Binding Height}">
+        
+        <Border.Effect>
+            <DropShadowEffect></DropShadowEffect>
+        </Border.Effect>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.,0.5" EndPoint="0.5,1">
+                <GradientStop Color="{Binding Path=Background1,ElementName=buttonCircleIcon}"  Offset="0.5" ></GradientStop>
+                <GradientStop Color="{Binding Path=Background2,ElementName=buttonCircleIcon}"  Offset="1"></GradientStop>
+            </LinearGradientBrush>
+        </Border.Background>
+        
+        <Grid>
+            <Button Style="{x:Null}" Background="Transparent" BorderThickness="0"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="{Binding Path=ToolTipContent,ElementName=buttonCircleIcon}"
+                    Command="{Binding Path=SubmitButton, ElementName=buttonCircleIcon}" CommandParameter="{Binding Path=CommandParameter, ElementName=buttonCircleIcon}">
+                <materialDesign:PackIcon Kind="{Binding Path=Icon, ElementName=buttonCircleIcon}"
+                                         Width="{Binding Path=WidthIcon,ElementName=buttonCircleIcon}"
+                                         Height="{Binding Path=HeightIcon,ElementName=buttonCircleIcon}"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Foreground="{Binding Foreground, ElementName=buttonCircleIcon}">
+                    
+                </materialDesign:PackIcon>
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Review_Project.MVVM.View.UserControlView.ProductCategoryPageUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Review_Project.MVVM.View.UserControlView"
+             xmlns:viewModel="clr-namespace:Review_Project.MVVM.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="1000"
+             Name="productCategoryPageUC">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadProductCategoryPageCommand}" CommandParameter="{Binding ElementName=productCategoryPageUC}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock  Margin="20,0,0,0" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center"
+                        FontSize="25" Foreground="White" >Danh Sách Sản Phẩm :</TextBlock>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Border CornerRadius="20"
+                                Background="#313338" Width="950" Height="400">
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,950,400"></RectangleGeometry>
+                </Border.Clip>
+
+                <ScrollViewer Background="Transparent">
+                    <ItemsControl x:Name="listProductVM" 
+                                  Background="Transparent"
+                                  ItemTemplate="{StaticResource ProductItemTemplate}">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <i:InvokeCommandAction Command="{Binding LoadListProductCommand}" CommandParameter="{Binding ElementName=listProductVM}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Background="Transparent"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
